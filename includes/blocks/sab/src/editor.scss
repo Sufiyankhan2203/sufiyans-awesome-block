@@ -1,1 +1,9 @@
-@use 'style.scss';
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+ .sab-table-block {
+	border: 1px dotted #000000;
+}

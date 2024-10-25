@@ -3,51 +3,42 @@
   "apiVersion": 3,
   "name": "sab/sufiyans-api-block",
   "title": "Sufiyans Awesome Block",
-  "category": "widgets",
-  "icon": "rest-api",
-  "description": "Display data from the API",
   "version": "1.0.0",
-  "attributes": {
-    "blockId": {
-      "type": "string",
-      "default": ""
-    },
-    "blockVersion": {
-      "type": "string",
-      "default": ""
-    },
-    "showIdColumn": {
-      "type": "boolean",
-      "default": true
-    },
-    "showFirstNameColumn": {
-      "type": "boolean",
-      "default": true
-    },
-    "showLastNameColumn": {
-      "type": "boolean",
-      "default": true
-    },
-    "showEmailColumn": {
-      "type": "boolean",
-      "default": true
-    },
-    "showDateColumn": {
-      "type": "boolean",
-      "default": true
-    },
-    "header": {
-      "type": "array"
-    },
-    "body": {
-      "type": "object"
-    }
-  },
+  "category": "widgets",
+  "icon": "editor-table",
+  "description": "Block Showcasing Data from API with Confirgurable Columns .",
+  "example": {},
   "supports": {
     "html": false
   },
   "textdomain": "Sab",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css"
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js",
+  "attributes": {
+    "colOne": {
+      "type": "boolean",
+      "default": false
+    },
+    "colTwo": {
+      "type": "boolean",
+      "default": false
+    },
+    "colThree": {
+      "type": "boolean",
+      "default": false
+    },
+    "colFour": {
+      "type": "boolean",
+      "default": false
+    },
+    "colFive": {
+      "type": "boolean",
+      "default": false
+    },
+    "table": {
+      "type": "object"
+    }
+  }
 }

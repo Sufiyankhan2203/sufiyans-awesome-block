@@ -1,67 +1,127 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, PanelRow, ToggleControl } from '@wordpress/components';
+import { PanelBody, ToggleControl, Notice } from '@wordpress/components';
+import { useState, useEffect } from '@wordpress/element';
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 import './editor.scss';
-import Block from './block';
-import metadata from './block.json';
+import apiFetch from '@wordpress/api-fetch';
+import moment from 'moment';
 
-export default function Edit( { attributes, setAttributes, clientId } ) {
-	const blockProps = useBlockProps();
+export default function editTable( { attributes: { colOne, colTwo, colThree, colFour, colFive }, setAttributes } ) {
+	const blockProps = useBlockProps( { className:'sab-table-block' } );
+	const [ table, setTable ]	= useState('' );
 
-	setAttributes({
-		blockId: clientId,
-		blockVersion: metadata.version,
-	});
+	useEffect( () => {
+		apiFetch( { path: '/sab/v1/data' } ).then(
+			(result) => {
+				if ( false !== result ) {
+					setTable( result );
+					setAttributes( { table: result } );
+				}
+			}
+		);
+	}, []);
 
-	return (
-		<>
-			<Block
-				blockProps={ blockProps }
-				attributes={ attributes }
-				setAttributes={setAttributes}
-				isEditor={true}
-			/>
-			<InspectorControls>
-				<PanelBody
-					title={__('API Data Settings', 'Sab')}
-				>
-					<PanelRow>
+	if ( '' !== table ) {
+		const tbody = Object.values( table.data.rows );
+		const colOneHide = colOne ? 'col-one-hide ' : '' ;
+		const colTwoHide = colTwo ? 'col-two-hide ' : '' ;
+		const colThreeHide = colThree ? 'col-three-hide ' : '' ;
+		const colFourHide = colFour ? 'col-four-hide ' : '' ;
+		const colFiveHide = colFive ? 'col-five-hide ' : '' ;
+
+		return (
+			<>
+				<InspectorControls>
+					<PanelBody>
 						<ToggleControl
-							checked={ attributes.showIdColumn }
-							label={ __('Show ID Column', 'Sab') }
-							onChange={ (value) => setAttributes({ showIdColumn: value }) }
+							__nextHasNoMarginBottom
+							label={__(
+								'Hide the first column.', 'Sab'
+							)}
+							checked={!!colOne}
+							onChange={ () => setAttributes( { colOne: ! colOne } ) }
 						/>
-					</PanelRow>
-					<PanelRow>
 						<ToggleControl
-							checked={ attributes.showFirstNameColumn }
-							label={ __('Show FirstName Column', 'Sab') }
-							onChange={ (value) => setAttributes({ showFirstNameColumn: value }) }
+							__nextHasNoMarginBottom
+							label={__(
+								'Hide the second column.', 'Sab'
+							)}
+							checked={!!colTwo}
+							onChange={ () => setAttributes( { colTwo: ! colTwo } )}
 						/>
-					</PanelRow>
-					<PanelRow>
 						<ToggleControl
-							checked={ attributes.showLastNameColumn }
-							label={ __('Show Last Name Column', 'Sab') }
-							onChange={ (value) => setAttributes({ showLastNameColumn: value }) }
+							__nextHasNoMarginBottom
+							label={__(
+								'Hide the third column.', 'Sab'
+							)}
+							checked={!!colThree}
+							onChange={ () => setAttributes( { colThree: ! colThree } )}
 						/>
-					</PanelRow>
-					<PanelRow>
 						<ToggleControl
-							checked={ attributes.showEmailColumn }
-							label={ __('Show Email Column', 'Sab') }
-							onChange={ (value) => setAttributes({ showEmailColumn: value }) }
+							__nextHasNoMarginBottom
+							label={__(
+								'Hide the fourth column.', 'Sab'
+							)}
+							checked={!!colFour}
+							onChange={ () => setAttributes( { colFour: ! colFour} )}
 						/>
-					</PanelRow>
-					<PanelRow>
 						<ToggleControl
-							checked={ attributes.showDateColumn }
-							label={ __('Show Date Column', 'Sab') }
-							onChange={ (value) => setAttributes({ showDateColumn: value }) }
+							__nextHasNoMarginBottom
+							label={__(
+								'Hide the fifth column.', 'Sab'
+							)}
+							checked={!!colFive}
+							onChange={ () => setAttributes( { colFive: ! colFive } )}
 						/>
-					</PanelRow>
-				</PanelBody>
-			</InspectorControls>
-		</>
-	);
+					</PanelBody>
+				</InspectorControls>
+				<div {...blockProps}>
+					<h2 className={"sab-heading"}>Data from API</h2>
+					<table className={ colOneHide + colTwoHide + colThreeHide + colFourHide + colFiveHide + 'wp-list-table widefat striped' }>
+						<thead>
+							<tr key={table.title}>
+								{ table.data.headers.map( ( item ) =>
+									<td key={item}>
+										{ item }
+									</td>
+								) }
+							</tr>
+						</thead>
+						<tbody>
+						{ tbody.map( ( item, i ) =>
+							<tr key={i}>
+								<td>
+									{ tbody[i].id }
+								</td>
+								<td>
+									{ tbody[i].fname }
+								</td>
+								<td>
+									{ tbody[i].lname }
+								</td>
+								<td>
+									{ tbody[i].email }
+								</td>
+								<td>
+									{ moment( tbody[i].date * 1000 ).format('L') }
+								</td>
+							</tr>
+						)}
+						</tbody>
+						<tfoot>
+							<tr key={table.title}>
+								{ table.data.headers.map( item => (
+									<td key={item}>
+										{ item }
+									</td>
+								) ) }
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</>
+		);
+	} else if (false === table) {
+		return( <Notice isDismissible={ false } status="error">{__( "Sufiyan's Awesome Block could not connect to the data server. Please check your internet connection.", 'Sab' ) }</Notice> );
+	}
 }
