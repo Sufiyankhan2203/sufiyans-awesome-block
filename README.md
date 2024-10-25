@@ -1,6 +1,7 @@
 # Sufiyan's Awesome Plugin
 
 A simple plugin that retrieves data from a remote API endpoint, and makes that data accessible/retrievable from an API endpoint on the WordPress site your plugin is installed on. The data will be displayed via a custom block and on an admin WordPress page as described. A simple WP CLI command is also available
+This Plugin Follows WordPress-VIP-Go Coding Standards
 
 ## Getting Started
 ### Installing
@@ -53,6 +54,7 @@ API Based Plugin uses a number of open source projects to work properly:
 * [JavaScript] - a dynamic programming language
 * [node.js] - evented I/O for the backend
 * [NPM] - is the world's largest software registry
+* [PHPCS] - PHP_CodeSniffer is a set of two PHP scripts; one for validating PHP, syntax, and the other for checking adherence to a defined set of coding standards.
 
 ## Contact
 
@@ -72,6 +74,7 @@ Sufiyan Khan - Senior WordPress Developer
    [JavaScript]: <https://developer.mozilla.org/en-US/docs/Web/JavaScript>
    [node.js]: <http://nodejs.org>
    [NPM]: <https://www.npmjs.com/>
+   [PHPCS]: <https://github.com/squizlabs/PHP_CodeSniffer>
    
    [My_Site]: <http://sufiyan.me/>
    [LinkedIn]: <https://www.linkedin.com/in/sufiyan-khan-76b77291/>
