@@ -1,0 +1,98 @@
+/*
+ * General
+ */
+ .sab-block-section {
+    width: 100%;
+}
+
+/*
+ * Table
+ */
+
+.form-table{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.sab-list-table {
+    border: 1px solid #dadada;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-width: 620px;
+    table-layout: fixed;
+    font-size: 1em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+    thead {
+        tr {
+            background-color: #333333 !important;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        @media screen and (max-width: 768px) {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+    }
+
+    th {
+        padding: 10px;
+        border-bottom: 1px solid #dadada;
+        white-space: nowrap;
+    }
+
+    td {
+        padding: 10px;
+        border-bottom: 1px solid #dadada;
+        white-space: nowrap;
+
+        @media screen and (max-width: 768px) {
+            border-bottom: 1px solid #ddd;
+            display: block;
+
+            &::before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        }
+    }
+
+    tr {
+        border-bottom: 1px solid #dddddd;
+
+        &:nth-child(even) {
+            background: #e4e4e4;
+        }
+
+        &:nth-child(odd):not(:first-child) {
+            background: #FFFFFF;
+        }
+
+        @media screen and (max-width: 768px) {
+            border-bottom: 3px solid #ddd;
+            display: block;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        border: 0;
+        width: 100%;
+    }
+}
