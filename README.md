@@ -23,6 +23,24 @@ Thds Plugin adds a Custom Gutenberg Block and a WP_CLI Command
 $ wp Sab refresh_api
 ```
 
+### Screen Shots
+
+#### Frontend
+
+![CleanShot 2024-10-25 at 20 48 17@2x](https://github.com/user-attachments/assets/069fdcce-a742-4659-85bb-5c70ff9ec467)
+
+#### Backend
+
+![CleanShot 2024-10-25 at 22 54 43@2x](https://github.com/user-attachments/assets/4342aa07-d970-45cc-acdb-35b7652653fa)
+
+#### Block
+
+![CleanShot 2024-10-25 at 22 54 32@2x](https://github.com/user-attachments/assets/e2693273-b2ae-4a8e-a434-80f638d11e64)
+
+#### CLI Command
+
+![CleanShot 2024-10-25 at 22 56 16@2x](https://github.com/user-attachments/assets/fe988754-2b07-4a8c-a72c-ab915abc4c75)
+
 ## Built With
 
 API Based Plugin uses a number of open source projects to work properly:
