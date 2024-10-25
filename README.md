@@ -1,7 +1,7 @@
 # Sufiyan's Awesome Plugin
 
 A simple plugin that retrieves data from a remote API endpoint, and makes that data accessible/retrievable from an API endpoint on the WordPress site your plugin is installed on. The data will be displayed via a custom block and on an admin WordPress page as described. A simple WP CLI command is also available
-This Plugin Follows WordPress-VIP-Go Coding Standards
+This Plugin Follows `WordPress-VIP-Go` Coding Standards.
 
 ## Getting Started
 ### Installing
@@ -44,7 +44,7 @@ $ wp Sab refresh_api
 
 ## Built With
 
-API Based Plugin uses a number of open source projects to work properly:
+This Plugin uses a number of open source projects to work properly:
 
 * [WordPress] - an open source content management system
 * [Gutenberg] - new paradigm in WordPress site building and publishing
