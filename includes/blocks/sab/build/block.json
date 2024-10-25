@@ -1,11 +1,11 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "sab/sufiyans-api-block",
+  "name": "sab/sufiyans-awesome-block",
   "title": "Sufiyans Awesome Block",
   "version": "1.0.0",
   "category": "widgets",
-  "icon": "editor-table",
+  "icon": "rest-api",
   "description": "Block Showcasing Data from API with Confirgurable Columns .",
   "example": {},
   "supports": {
