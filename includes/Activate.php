@@ -1,12 +1,26 @@
 <?php
+/**
+ * Activates the plugin
+ *
+ * @package Sab
+ */
 namespace Sab\Includes;
 
-if( ! defined( 'ABSPATH' ) ) {
-   die;
+if ( ! defined( 'ABSPATH' ) ) {
+	die;
 }
 
+/**
+ * Activate class
+ */
 class Activate {
-   public static function activate() {
-      flush_rewrite_rules();
-   }
+
+	/**
+	 * Activate the plugin
+	 *
+	 * @return void
+	 */
+	public static function activate() { // phpcs:ignore
+		flush_rewrite_rules(); // phpcs:ignore
+	}
 }
